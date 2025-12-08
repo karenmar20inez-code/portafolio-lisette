@@ -398,6 +398,68 @@
             box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
         }
 
+        /* --- NUEVO: Estilos Dinámicos para Botones de Contacto --- */
+        .contact-dynamic-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto Hover: Elevar y Sombra */
+        .contact-dynamic-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(111, 66, 193, 0.15);
+            border-color: rgba(111, 66, 193, 0.3);
+        }
+
+        /* Línea lateral que aparece al hover */
+        .contact-dynamic-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-dynamic-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Caja del Icono */
+        .contact-icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: #f3f0fa; /* Fondo morado claro */
+            color: var(--primary-purple);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Animación del Icono al Hover */
+        .contact-dynamic-btn:hover .contact-icon-box {
+            background: var(--gradient-main);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+
         /* --- Footer --- */
         footer {
             background: #1a1a2e;
@@ -771,15 +833,22 @@
                     </p>
                     
                     <div class="d-flex flex-column gap-3 mb-4">
-                         <a href="mailto:lis14xs@gmail.com" class="text-decoration-none d-flex align-items-center gap-3 p-3 bg-white rounded-3 shadow-sm text-dark hover-effect">
-                            <div class="icon-box mb-0" style="width: 40px; height: 40px; font-size: 1.2rem;"><i class="fas fa-envelope"></i></div>
+                        <!-- Botón Dinámico Correo -->
+                        <a href="mailto:lis14xs@gmail.com" class="contact-dynamic-btn">
+                            <div class="contact-icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div>
                                 <span class="d-block text-muted small">Correo Electrónico</span>
                                 <span class="fw-bold">lis14xs@gmail.com</span>
                             </div>
                         </a>
-                        <a href="https://wa.me/525538973066" target="_blank" class="text-decoration-none d-flex align-items-center gap-3 p-3 bg-white rounded-3 shadow-sm text-dark hover-effect">
-                            <div class="icon-box mb-0" style="width: 40px; height: 40px; font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></div>
+                        
+                        <!-- Botón Dinámico WhatsApp -->
+                        <a href="https://wa.me/525538973066" target="_blank" class="contact-dynamic-btn">
+                            <div class="contact-icon-box">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
                             <div>
                                 <span class="d-block text-muted small">WhatsApp</span>
                                 <span class="fw-bold">+52 55 3897 3066</span>
@@ -809,7 +878,7 @@
                                 <label for="mensaje" class="form-label fw-bold small text-muted">MENSAJE</label>
                                 <textarea class="form-control" id="mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-custom w-100 py-3 fw-bold">Enviar Mensaje <i class="fas fa-paper-plane ms-2"></i></button>
+                            <button type="submit" class="btn btn-custom w-100 py-3 fw-bold" style="background: var(--gradient-main); color: white; border: none; border-radius: 50px;">Enviar Mensaje <i class="fas fa-paper-plane ms-2"></i></button>
                         </form>
                     </div>
                 </div>
